@@ -1,0 +1,19 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”alert”><%= alert %></p>
+
+<%= render 'formdetails'%>
+
+<br>
+<br>
+
+<%= link_to "Back to Main Menu", main_path , class: "btn btn-lg btn-default"%>
+
+<%= link_to "Add to Favorites", addfavoriteproject_path(:favorite_project => {"title" => params[:title],
+                                                                              "form" => params[:form],
+                                                                              "abstract" => params[:abstract],
+                                                                              "url" => "https://tiss.tuwien.ac.at/fpl/project/index.xhtml?id=" + params[:id],
+                                                                              "user_id" => session[:user_id]}) , class: "btn btn-lg btn-default"%>
+
+</html>

@@ -1,0 +1,36 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”alert”><%= alert %></p>
+
+<h1>List</h1>
+
+  <% if @results != nil %>
+  <table>
+
+    <tr>
+      <th>Title</th>
+      <th>Details</th>
+      <th>Favorites</th>
+    </tr>
+    <% @results.each do |x|  %>
+        <tr>
+          <th><%= x[1]["tuvienna"]["thesis"]["title"]["en"]%></th>
+          <th><%= link_to "Details",details_path(:thesis => x[1]["tuvienna"]["thesis"], :type => @search), class: "newlink"%></th>
+          <th><%= link_to "Add to Favorites", addfavoritethese_path(:favorite_thesis => {"ttype" => x[1]["tuvienna"]["thesis"]["thesisType"],
+                                                                                         "title" => x[1]["tuvienna"]["thesis"]["title"]["en"],
+                                                                                         "institution" => x[1]["tuvienna"]["thesis"]["instituteName"]["en"],
+                                                                                         "url" => x[1]["tuvienna"]["thesis"]["url"],
+                                                                                         "user_id" => session[:user_id]}),class: "newlink" %></th>
+        </tr>
+      <% end %>
+  </table>
+  <% else %>
+        <h2>There was no results to this search</h2>
+  <% end %>
+
+
+<%= link_to "Back to Main Menu", main_path, class: "btn btn-lg btn-default"%>
+
+<p id=”notice”><%= notice %></p>
+</html>

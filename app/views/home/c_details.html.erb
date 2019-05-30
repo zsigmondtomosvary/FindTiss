@@ -1,0 +1,20 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”alert”><%= alert %></p>
+
+<%= render 'formdetails'%>
+
+<br>
+<br>
+
+
+<%= link_to "Back to Main Menu", main_path , class: "btn btn-lg btn-default"%>
+
+<%= link_to "Add to Favorites", addfavoritecourse_path(:favorite_course => {"title" => params[:title],
+                                                                            "objective" => params[:objective].html_safe,
+                                                                            "teachingcontent" => params[:teachingcontent].html_safe,
+                                                                            "url" => params[:url],
+                                                                            "user_id" => session[:user_id]}), class: "btn btn-lg btn-default"%>
+
+</html>

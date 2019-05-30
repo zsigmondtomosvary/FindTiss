@@ -1,0 +1,36 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id="notice"><%= notice %></p>
+
+<h1>Course Details</h1>
+
+<div class="row">
+  <div class="col-xs-6">
+  <p>
+    <h3>Title:</h3>
+    <%= @favorite_course.title %>
+  </p>
+
+  <p>
+    <h3>Objective:</h3>
+    <%= @favorite_course.objective.html_safe %>
+  </p>
+
+    <p>
+    <h3>Teaching Content:</h3>
+    <%= @favorite_course.teachingcontent.html_safe %>
+    </p>
+
+
+  <p>
+    <i><%= link_to "Check out the official website", @favorite_course.url %></i>
+  </p>
+
+  </div>
+</div>
+
+</br>
+
+<%= link_to 'Back to favorite courses', favorite_courses_path , class: "btn btn-lg btn-default"%>
+</html>

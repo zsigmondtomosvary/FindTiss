@@ -1,0 +1,29 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”notice”><%= notice %></p>
+
+<h1>Main Menu</h1>
+<br>
+
+<%= link_to "Search Courses", searchCourses_path(:type => "Course"), class: "btn btn-lg btn-default" %>
+<br><br>
+
+<%= link_to "Search People", searchPeople_path(:type => "Person") , class: "btn btn-lg btn-default"%>
+<br><br>
+
+<%= link_to "Search Projects", searchProjects_path(:type => "Project") , class: "btn btn-lg btn-default"%>
+<br><br>
+
+<%= link_to "Search Theses", searchTheses_path(:type => "These") , class: "btn btn-lg btn-default" %>
+<br><br>
+
+Go to Favorites: <%= link_to "Show Favorites", favorites_path, :method => 'get' , class: "btn btn-lg btn-default" %>
+<br><br><br>
+
+Click here to log out: <%= button_to "Log out", logout_path, :method => 'get' , class: "btn btn-lg btn-default"%>
+
+<p id=”alert”><%= alert %></p>
+
+</html>
+
+

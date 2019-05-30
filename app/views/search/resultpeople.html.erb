@@ -1,0 +1,40 @@
+
+<p id=”alert”><%= alert %></p>
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h1>List</h1>
+
+  <% if @results != nil %>
+  <table>
+
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Details</th>
+      <th>Favorites</th>
+    </tr>
+    <% @results.each do |x|  %>
+        <tr>
+          <td><%= x[1]["tuvienna"]["person"]["firstname"] %></td>
+          <td><%= x[1]["tuvienna"]["person"]["lastname"]%></td>
+          <td><%= link_to "Details",details_path(:person => x[1]["tuvienna"]["person"], :type => @search), class: "newlink"%></td>
+          <td><%= link_to "Add to Favorites", addfavoriteperson_path(:favorite_person => {"firstname" => x[1]["tuvienna"]["person"]["firstname"],
+                                                                                          "lastname" => x[1]["tuvienna"]["person"]["lastname"],
+                                                                                          "title" => x[1]["tuvienna"]["person"]["preceding_titles"],
+                                                                                          "email" => x[1]["tuvienna"]["person"]["main_email"],
+                                                                                          "phonenumber" => x[1]["tuvienna"]["person"]["main_phone_number"],
+                                                                                          "image" => x[1]["tuvienna"]["person"]["picture_uri"],
+                                                                                          "user_id" => session[:user_id]}), class:"newlink" %></td>
+        </tr>
+    <% end %>
+  </table>
+  <% else %>
+    <h2>There was no results to this search</h2>
+  <% end %>
+
+
+<%= link_to "Back to Main Menu", main_path, class: "btn btn-lg btn-default"%>
+
+<p id=”notice”><%= notice %></p>
+</html>

@@ -1,0 +1,42 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”alert”><%= alert %></p>
+
+<h1>List</h1>
+
+  <% if @results != nil %>
+    <table>
+
+      <tr>
+        <th>Title</th>
+        <th>Project Begin</th>
+        <th>Project End</th>
+        <th>Details</th>
+        <th>Favorites</th>
+      </tr>
+
+      <% @results.each do |x|  %>
+        <tr>
+          <th><%= x[1]["tuVienna"]["project"]["titleEn"]%></th>
+          <th><%= x[1]["tuVienna"]["project"]["projectBegin"]%></th>
+          <th><%= x[1]["tuVienna"]["project"]["projectEnd"]%></th>
+          <th><%= link_to "Details",details_path(:project => x[1]["tuVienna"]["project"], :type => @search), class: "newlink"%></th>
+          <th><%= link_to "Add to Favorites", addfavoriteproject_path(:favorite_project => {"title" => x[1]["tuVienna"]["project"]["titleEn"],
+                                                                                            "form" => x[1]["tuVienna"]["project"]["projectForm"],
+                                                                                            "abstract" => x[1]["tuVienna"]["project"]["abstractEn"],
+                                                                                            "url" => "https://tiss.tuwien.ac.at/fpl/project/index.xhtml?id=" +
+                                                                                                x[1]["tuVienna"]["project"]["id"],
+                                                                                            "user_id" => session[:user_id]}) ,class: "newlink"%></th>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <h2>There was no results to this search</h2>
+  <% end %>
+
+
+<%= link_to "Back to Main Menu", main_path, class: "btn btn-lg btn-default"%>
+
+<p id=”notice”><%= notice %></p>
+</html>

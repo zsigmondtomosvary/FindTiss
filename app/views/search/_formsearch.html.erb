@@ -1,0 +1,19 @@
+<%= form_with(local: true) do |form| %>
+
+  <h1><%= $search %> Search</h1>
+
+  <div class=”form-group”>
+    <%= label_tag "Enter " + $search + ":" %>
+    <%= text_field_tag(:search, params[:search], class: 'inputform') %>
+  </div>
+
+  <div class=”actions”>
+    <%= submit_tag "Search", class: "btn btn-lg btn-default"%>
+  </div>
+
+  <br><br>
+
+  <%= link_to "Return to Main Menu", main_path, class: "btn btn-lg btn-default"%>
+
+
+<% end %>

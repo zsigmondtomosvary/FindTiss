@@ -1,0 +1,67 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h1><%= $search %> Details</h1>
+
+<% if params[:teachingcontent] != nil %>
+
+  <div class="row">
+    <div class="grid">
+      <h3>Title:</h3><p><%=  params[:title] %></p><br>
+      <h3>Objective:</h3><p><%=  params[:objective].html_safe %></p><br>
+      <h3>Teaching Content:</h3><p><%=  params[:teachingcontent].html_safe %></p><br>
+      <i><%= link_to "Check out the official website", params[:url], class: "newlink"%></i>
+    </div>
+  </div>
+
+<% elsif params[:form] != nil %>
+
+  <div class="row">
+    <div class="grid">
+      <h3>Title:</h3><p><%=  params[:title] %></p><br>
+      <h3>Project Form:</h3><p><%=  params[:form] %></p><br>
+      <% if params[:abstract] != nil %>
+        <h3>Abstract:</h3><p><%=  params[:abstract].html_safe %></p><br>
+      <% end %>
+      <i><%= link_to "Check out the official website", "https://tiss.tuwien.ac.at/fpl/project/index.xhtml?id=" + params[:id], class: "newlink"%></i>
+    </div>
+  </div>
+
+<% elsif params[:thesistype] != nil %>
+
+  <div class="row">
+    <div class="grid">
+      <h3>Thesis Type:</h3><p><%=  params[:thesistype] %></p><br>
+      <h3>Title:</h3><p><%=  params[:title] %></p><br>
+      <h3>Institution Name:</h3><p><%=  params[:instname] %></p><br>
+      <i><%= link_to "Check out the official website", params[:url], class: "newlink"%></i>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <h3>Name:</h3><p><%=  params[:firstname]+" "+params[:lastname] %></p>
+      <h3>Title:</h3><p><%=  params[:prefixTitle] %></p>
+      <h3>Phone Number:</h3><p><%=  params[:phonenumber] %></p>
+      <h3>Email:</h3><p><%=  params[:email]%></p>
+
+    </div>
+    <div class="cols-xs-4">
+      <% if params[:image]!=nil %>
+        <%=  image_tag(params[:image], class: "style_image") %>
+      <% end %>
+    </div>
+  </div>
+
+      <br><br>
+
+      <%= link_to "Courses", resultcourses_path(:search => params[:firstname]+"+"+params[:lastname]) , class: "btn btn-lg btn-default"%>
+      <%= link_to "Projects", resultprojects_path(:search => params[:firstname]+"+"+params[:lastname]) , class: "btn btn-lg btn-default"%>
+      <%= link_to "Theses", resulttheses_path(:search => params[:firstname]+"+"+params[:lastname]) , class: "btn btn-lg btn-default"%>
+
+
+<% end %>
+
+</html>

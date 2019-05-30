@@ -1,0 +1,25 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”alert”><%= alert %></p>
+
+<h1>Login</h1>
+
+<%= form_tag sessions_path do |form| %>
+  <div class="form-group">
+    <%= label_tag :name %>
+    <%= text_field_tag :name, "", class: 'inputform'%>
+  </div>
+  <br>
+  <div class=”form-group”>
+    <%= label_tag :password %>
+    <%= password_field_tag :password, "", class: 'inputform' %>
+  </div>
+  <br>
+  <div class=”actions”>
+    <%= submit_tag "Login" , class: "btn btn-lg btn-default"%>
+  </div>
+<% end %>
+
+<%= link_to "Back", root_url, class: "btn btn-lg btn-default"%>
+</html>

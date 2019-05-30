@@ -1,0 +1,35 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id="notice"><%= notice %></p>
+
+<h1>Favorite Courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= link_to "Title", :sort => "title" %></th>
+      <th><%= link_to "Created", :sort => "created_at" %></th>
+      <th>Details</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorite_courses.each do |favorite_course| %>
+      <tr>
+        <td><%= favorite_course.title %></td>
+        <td><%= favorite_course.created_at %></td>
+        <td><%= link_to 'Show', favorite_course %></td>
+        <td><%= link_to 'Destroy', favorite_course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', favorites_path , class: "btn btn-lg btn-default"%>
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">

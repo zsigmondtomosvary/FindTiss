@@ -1,0 +1,42 @@
+<%= form_with(model: favorite_person, local: true) do |form| %>
+  <% if favorite_person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(favorite_person.errors.count, "error") %> prohibited this favorite_person from being saved:</h2>
+
+      <ul>
+      <% favorite_person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prefixTitle %>
+    <%= form.text_field :prefixTitle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

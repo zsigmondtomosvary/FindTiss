@@ -1,0 +1,24 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”alert”><%= alert %></p>
+
+<%= render 'formdetails'%>
+
+<br>
+<br>
+
+
+<%= link_to "Back to Main Menu", main_path , class: "btn btn-lg btn-default"%>
+<br/>
+
+
+<%= link_to "Add to Favorites", addfavoriteperson_path(:favorite_person => {"firstname" => params[:firstname],
+                                                                            "lastname" => params[:lastname],
+                                                                            "title" => params[:prefixTitle],
+                                                                            "email" => params[:email],
+                                                                            "phonenumber" => params[:phonenumber],
+                                                                            "image" => params[:image],
+                                                                            "user_id" => session[:user_id]}) , class: "btn btn-lg btn-default"%>
+
+</html>

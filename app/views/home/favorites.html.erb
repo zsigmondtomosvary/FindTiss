@@ -1,0 +1,22 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<h1>Favorites</h1>
+
+<br>
+<%= link_to "Favorite People", listfavoriteperson_path, :method => 'get' , class: "btn btn-lg btn-default" %>
+<br><br>
+
+<%= link_to "Favorite Courses", listfavoritecourse_path, :method => 'get' , class: "btn btn-lg btn-default" %>
+<br><br>
+
+<%= link_to "Favorite Projects", listfavoriteproject_path, :method => 'get' , class: "btn btn-lg btn-default" %>
+<br><br>
+
+<%= link_to "Favorite Thesee", listfavoritethese_path, :method => 'get', class: "btn btn-lg btn-default"  %>
+<br><br>
+
+<%= link_to "Back", main_path, :method => 'get' , class: "btn btn-lg btn-default" %>
+
+</html>

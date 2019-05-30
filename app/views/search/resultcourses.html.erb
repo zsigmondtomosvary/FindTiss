@@ -1,0 +1,41 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”alert”><%= alert %></p>
+
+<h1>List</h1>
+
+  <% if @results != nil %>
+  <table>
+
+      <tr>
+        <th>Title</th>
+        <th>Semester</th>
+        <th>Course Type</th>
+        <th>Details</th>
+        <th>Favorites</th>
+      </tr>
+
+      <% @results.each do |x|  %>
+        <tr>
+          <td><%= x[1]["tuvienna"]["course"]["title"]["en"]%></td>
+          <td><%= x[1]["tuvienna"]["course"]["semesterCode"]%></td>
+          <td><%= x[1]["tuvienna"]["course"]["courseType"]%></td>
+          <td><%= link_to "Details",details_path(:course => x[1]["tuvienna"]["course"], :type => @search), class: "newlink"%></td>
+          <td><%= link_to "Add to Favorites", addfavoritecourse_path(:favorite_course => {"title" => x[1]["tuvienna"]["course"]["title"]["en"],
+                                                                                          "objective" => x[1]["tuvienna"]["course"]["objective"]["en"].html_safe,
+                                                                                          "teachingcontent" => x[1]["tuvienna"]["course"]["teachingContent"]["en"].html_safe,
+                                                                                          "url" => x[1]["tuvienna"]["course"]["url"],
+                                                                                          "user_id" => session[:user_id]}),class: "newlink" %></td>
+        </tr>
+      <% end %>
+  </table>
+  <% else %>
+    <h2>There was no results to this search</h2>
+  <% end %>
+
+<%= link_to "Back to Main Menu", main_path, class: "btn btn-lg btn-default"%>
+
+<p id=”notice”><%= notice %></p>
+
+</html>

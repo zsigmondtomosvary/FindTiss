@@ -1,0 +1,26 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id=”notice”><%= notice %></p>
+
+<div class="center">
+
+<h1>Welcome to FindTiss</h1>
+<h3>Created by Zsigmond Tomosvary and Klara Otepka</h3>
+
+<p id=”alert”><%= alert %></p>
+
+
+<% if current_user %>
+  Logged in as <%= current_user.name %>.
+  <%= link_to "Log Out", logout_path , class: "btn btn-lg btn-default" %>
+  <br>
+  <%= link_to "Main", main_path , class: "btn btn-lg btn-default" %>
+<% else %>
+  <%= link_to "Sign Up", signUp_path , class: "btn btn-lg btn-default" %> or
+  <%= link_to "Log In", login_path , class: "btn btn-lg btn-default" %>
+<% end %>
+
+</div>
+
+</html>

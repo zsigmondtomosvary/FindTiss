@@ -1,0 +1,49 @@
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<p id="notice"><%= notice %></p>
+
+<h1>Person Details</h1>
+
+<div class="row">
+  <div class="col-xs-4">
+<p>
+  <h3>Name:</h3>
+  <%= @favorite_person.firstname + " " + @favorite_person.lastname %>
+</p>
+
+<p>
+  <% if @favorite_person.title.blank?%>
+  <% else %>
+      <h3>Title:</h3>
+    <%= @favorite_person.title %>
+  <% end %>
+</p>
+    <p>
+
+    <h3>Phone Number:</h3>
+    <%= @favorite_person.phonenumber %>
+    </p>
+
+    <p>
+    <h3>Email:</h3>
+    <%= @favorite_person.email %>
+    </p>
+
+  </div>
+  <div class="col-xs-4">
+
+<p>
+  <% if @favorite_person.image.blank?%>
+  <% else %>
+    <%= image_tag(@favorite_person.image, class: 'style_image') %>
+  <% end %>
+</p>
+
+  </div>
+</div>
+
+</br>
+
+<%= link_to 'Back to favorite people', favorite_people_path , class: "btn btn-lg btn-default"%>
+</html>
